@@ -13,18 +13,24 @@ import CategoryMini from '../../components/Category/CategoryMini';
 import { addPost } from '../../services/cartService';
 import SearchInput from '../../components/SearchInput';
 import Register from '../../components/Register';
+import { useSelector } from 'react-redux';
 
 function LayoutDefault () {
     const token = Cookies.get('token');
-    const fullName = Cookies.get('fullName') || "";
+    const [fullName, setFullName] = useState('');
     const [username, setUsername] = useState(fullName);
+    
+    const user = useSelector(state => state.userReducer);
     
     const location = useLocation();
     const selectedKey = location.pathname.split('/')[1]; 
-
+    
     useEffect(() => {
         window.scrollTo(0, 0);
 
+        if(user.length > 0){
+            setFullName(user[0].fullName);
+        }
         const checkCart = async () => {
             if(!Cookies.get("cart")) {
                 const options = {
@@ -37,7 +43,7 @@ function LayoutDefault () {
         }
 
         checkCart();
-    }, [location.pathname]);
+    }, [location.pathname, user]);
 
     const items = [
         {

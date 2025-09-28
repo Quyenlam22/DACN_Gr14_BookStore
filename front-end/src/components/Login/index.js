@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { getCartByUser, updatePatch } from "../../services/cartService";
 import { useDispatch } from "react-redux";
 import { setCart } from "../../actions/cart";
+import { getUser } from "../../actions/user";
 
 const rules = [{ 
     required: true, 
@@ -48,6 +49,7 @@ function Login (props) {
         
         if(!response.message){
             setIsModalOpen(false);
+            dispatch(getUser(response));
             const cart = await getCartByUser(response.id);
             
             if(cart.length > 0) {

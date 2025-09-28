@@ -1,6 +1,5 @@
 const cartReducer = (state = [], action) => {
     let newState = [...state]; 
-    console.log(newState);
     
     switch (action.type) {
         case "ADD_TO_CART":

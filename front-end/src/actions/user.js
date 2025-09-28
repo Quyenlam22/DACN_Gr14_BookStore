@@ -1,3 +1,10 @@
+export const getUser = (items) => {
+    return ({
+        type: "GET_USER",
+        items: items,
+    })
+}
+
 export const setUser = (items) => {
     return ({
         type: "SET_USER",

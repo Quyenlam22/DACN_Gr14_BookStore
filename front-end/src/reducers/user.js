@@ -2,6 +2,12 @@ const userReducer = (state = [], action) => {
     let newState = [...state];
 
     switch (action.type) {
+        case "GET_USER":
+            newState = [
+                ...state,
+                action.items
+            ];            
+            return newState;
         case "SET_USER":
             return action.items.reverse();
         case "CREATE_USER":

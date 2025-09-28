@@ -8,6 +8,7 @@ import Order from "../../pages/client/Order";
 import SearchResult from "../../pages/client/SearchResult";
 import ResultOrder from "../../pages/client/Result";
 import OrderList from "../../pages/client/Order/OrderList";
+import UserInfo from "../../pages/client/UserInfo";
 
 export const routesClient = [
     {
@@ -39,6 +40,10 @@ export const routesClient = [
             {
                 element: <PrivateRoute/>,
                 children: [
+                    {
+                        path: "/user-info",
+                        element: <UserInfo/>
+                    },
                     {
                         path: "/orders",
                         element: <Order/>
