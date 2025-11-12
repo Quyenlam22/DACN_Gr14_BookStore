@@ -46,6 +46,11 @@ function MenuSider () {
             ]
         },
         {
+            key: '/admin/orders',
+            icon: <FaUserSecret />,
+            label: <Link to={"/admin/orders"}>Quản lý đơn hàng</Link>,
+        },
+        {
             key: '/admin/settings',
             icon: <SettingOutlined />,
             label: <Link to={"/admin/settings"}>Cài đặt chung</Link>,

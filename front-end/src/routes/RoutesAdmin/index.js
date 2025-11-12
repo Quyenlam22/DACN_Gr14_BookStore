@@ -8,6 +8,7 @@ import UserAdmin from "../../pages/admin/UserAdmin";
 import UserClient from "../../pages/admin/UserClient";
 import LoginAdmin from "../../pages/admin/LoginAdmin/index";
 import PrivateRouteAdmin from "../../components/PrivateRoute/PrivateRouteAdmin";
+import Order from "../../pages/admin/Order";
 
 export const routesAdmin = [
     {
@@ -44,6 +45,10 @@ export const routesAdmin = [
                     {
                         path: "userAdmin",
                         element: <UserAdmin/>,
+                    },
+                    {
+                        path: "orders",
+                        element: <Order/>,
                     },
                     {
                         path: "settings",
