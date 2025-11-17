@@ -76,7 +76,7 @@ function Order() {
               return {
                 key: index + 1,
                 id: item.id,
-                user: `${item.userInfo.id} - ${item.userInfo.fullName}`,
+                user: item.userInfo.fullName,
                 totalItems,
                 totalAmount: item.totalAmount,
                 status: item.status,
