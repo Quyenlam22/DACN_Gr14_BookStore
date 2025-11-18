@@ -1,6 +1,7 @@
 package com.group_6.book_store.service;
 
 import com.group_6.book_store.dto.OrderDTO;
+import com.group_6.book_store.dto.OrderDTO_v2;
 import com.group_6.book_store.entity.Book;
 import com.group_6.book_store.entity.Order;
 import com.group_6.book_store.entity.OrderItem;
@@ -101,5 +102,47 @@ public class OrderServiceV2 {
         order = orderRepository.save(order);
 
         return orderMapper.toDTO(order);
+    }
+
+    // Phương thức mới: Lấy tất cả đơn hàng
+    public Page<OrderDTO_v2> getAllOrders(Pageable pageable) {
+        // Sử dụng phương thức tối ưu hóa JOIN FETCH từ Repository
+        return orderRepository.findAllWithDetails(pageable)
+                .map(this::convertToOrderDTOV2); // Sửa mapper call
+    }
+
+    // Phương thức hỗ trợ mới để chuyển đổi Entity sang DTO_v2
+    private OrderDTO_v2 convertToOrderDTOV2(Order order) {
+        OrderDTO_v2 dtoV2 = orderMapper.toDTO_V2(order);
+
+        // Tính toán tổng số lượng sản phẩm (totalQuantity)
+        int totalQuantity = order.getOrderItems().stream()
+                .mapToInt(OrderItem::getQuantity)
+                .sum();
+
+        dtoV2.setTotalQuantity(totalQuantity);
+
+        return dtoV2;
+    }
+
+    @Transactional
+    public void deleteOrder(Long orderId) {
+        Order order = orderRepository.findByIdWithDetails(orderId); // Sử dụng findByIdWithDetails để load OrderItems và Book
+
+        if (order == null) {
+            throw new RuntimeException("Order not found with id: " + orderId);
+        }
+
+        // 1. Hoàn trả lại Stock (Tồn kho) cho các cuốn sách
+        for (OrderItem item : order.getOrderItems()) {
+            Book book = item.getBook();
+            // Cập nhật stock: stock mới = stock cũ + số lượng đã mua
+            book.setStock(book.getStock() + item.getQuantity());
+            bookRepository.save(book);
+        }
+
+        // 2. Xóa đơn hàng
+        // CascadeType.ALL và orphanRemoval=true trong Order Items sẽ đảm bảo OrderItems cũng bị xóa.
+        orderRepository.delete(order);
     }
 }

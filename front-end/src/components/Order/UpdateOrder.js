@@ -16,7 +16,6 @@ function UpdateOrder({ item }) {
         duration: 1.5,
       });
       setIsModalOpen(false);
-      window.location.reload();
     } catch (error) {
       console.error(error);
       api["error"]({

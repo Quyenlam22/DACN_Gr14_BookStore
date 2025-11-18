@@ -1,6 +1,7 @@
 package com.group_6.book_store.controller;
 
 import com.group_6.book_store.dto.OrderDTO;
+import com.group_6.book_store.dto.OrderDTO_v2;
 import com.group_6.book_store.form.OrderCreateForm;
 import com.group_6.book_store.service.OrderServiceV2;
 import jakarta.validation.Valid;
@@ -29,5 +30,17 @@ public class OrderControllerV2 {
     public ResponseEntity<OrderDTO> createOrder(@Valid @RequestBody OrderCreateForm form, @RequestParam Long userId) {
         OrderDTO order = orderServiceV2.createOrder(userId, form);
         return ResponseEntity.ok(order);
+    }
+
+    @GetMapping("/orders") // Endpoint lấy tất cả đơn hàng
+    public ResponseEntity<Page<OrderDTO_v2>> getAllOrders(Pageable pageable) {
+        Page<OrderDTO_v2> orders = orderServiceV2.getAllOrders(pageable);
+        return ResponseEntity.ok(orders);
+    }
+
+    @DeleteMapping("/orders/{orderId}") // Endpoint mới
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long orderId) {
+        orderServiceV2.deleteOrder(orderId);
+        return ResponseEntity.noContent().build(); // Trả về 204 No Content khi xóa thành công
     }
 }

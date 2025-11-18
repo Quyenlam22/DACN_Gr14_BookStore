@@ -1,6 +1,7 @@
 package com.group_6.book_store.mapper;
 
 import com.group_6.book_store.dto.OrderDTO;
+import com.group_6.book_store.dto.OrderDTO_v2;
 import com.group_6.book_store.dto.OrderItemDTO;
 import com.group_6.book_store.entity.Order;
 import com.group_6.book_store.entity.OrderItem;
@@ -33,4 +34,13 @@ public interface OrderMapper {
 
     @Mapping(target = "status", source = "status")
     void updateStatusFromForm(OrderStatusUpdateForm form, @MappingTarget Order order);
+
+    // Phương thức mới để ánh xạ sang DTO_v2
+    @Mapping(source = "user.username", target = "userName")
+    @Mapping(source = "fullName", target = "userInfo.fullName")
+    @Mapping(source = "phone", target = "userInfo.phone")
+    @Mapping(source = "address", target = "userInfo.address")
+    // totalQuantity phải được tính toán trong Service vì nó là aggregated field
+    @Mapping(target = "totalQuantity", ignore = true)
+    OrderDTO_v2 toDTO_V2(Order order);
 }

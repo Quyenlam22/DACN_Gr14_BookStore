@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { getCart, updatePatch } from "../../services/cartService";
 
 function CartItem(props) {
-    const { item } = props;
+    const { item, updateLocalData } = props;
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(item.quantity);
 
@@ -27,6 +27,8 @@ function CartItem(props) {
                     cartItems: cartData.cartItems
                 };
 
+                updateLocalData(item.id, newQuantity);
+
                 await updatePatch(options, cartId);
             }
             dispatch(updateQuantity(item.id, change));
@@ -42,7 +44,7 @@ function CartItem(props) {
             const options = {
                 cartItems: newcartItems
             };
-
+            updateLocalData(item.id, 0);
             await updatePatch(options, cartId);
         }
         dispatch(deleteItem(item.id));

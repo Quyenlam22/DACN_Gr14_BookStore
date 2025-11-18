@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Divider, Flex, notification, Popconfirm, Radio, Table, Tag } from "antd";
 import Cookies from "js-cookie";
 import { getInfoUser } from "../../../services/userService";
-import { getOrderByUserId, delOrder } from "../../../services/orderService";
+import { getOrderByUserId, delOrder, getOrders } from "../../../services/orderService";
 import { useDispatch } from "react-redux";
 import { setOrder, deleteOrder } from "../../../actions/order";
 // import CreateOrder from "../../../components/Order/CreateOrder";
@@ -17,6 +17,14 @@ const columns = [
   {
     title: "Người dùng",
     dataIndex: "user",
+  },
+  {
+    title: 'Thông tin khách hàng',
+    dataIndex: 'userInfo',
+  },
+  {
+    title: 'Sản phẩm đã đặt',
+    dataIndex: 'orderItems',
   },
   {
     title: "Số lượng sản phẩm",
@@ -66,7 +74,8 @@ function Order() {
       try {
         const user = await getInfoUser(Cookies.get("userId"));
         if (user) {
-          const response = await getOrderByUserId(user.id);
+          const response = await getOrders();
+          
           if (response && response.content) {
             const dataTable = response.content.map((item, index) => {
               const date = new Date(item.createdAt).toLocaleDateString();
@@ -76,8 +85,25 @@ function Order() {
               return {
                 key: index + 1,
                 id: item.id,
-                user: `${item.userInfo.id} - ${item.userInfo.fullName}`,
+                user: item.userInfo.fullName,
                 totalItems,
+                userInfo: (
+                  <>
+                    <p>{item.userInfo.fullName}</p>
+                    <p>{item.userInfo.phone}</p>
+                    <p>{item.userInfo.address}</p>
+                  </>
+                ),
+                orderItems: (
+                  item.orderItems.map((itemOrder) => (
+                    <div className="item-order" key={itemOrder.id}>
+                      <h3>{itemOrder.bookTitle}</h3>
+                      <p>Số lượng: {itemOrder.quantity}</p>
+                      <p>Giá: {(itemOrder.unitPrice * (1 - itemOrder.discount/100)).toFixed(2)}</p>
+                      {/* <p>Giảm giá: {itemOrder.discount}</p> */}
+                    </div>
+                  ))
+                ),
                 totalAmount: item.totalAmount,
                 status: item.status,
                 createdAt: date,

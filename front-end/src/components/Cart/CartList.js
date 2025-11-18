@@ -1,13 +1,13 @@
 import CartItem from "./CartItem";
 
 function CartList(props) {
-    const { data } = props;
+    const { data, updateLocalData } = props; 
 
     return (
         <>
             <div className="cart">
                 {data.map(item => (
-                    <CartItem item={item} key={item.info.id}/>
+                    <CartItem item={item} key={item.info.id} updateLocalData={updateLocalData}/> 
                 ))}
             </div>
         </>

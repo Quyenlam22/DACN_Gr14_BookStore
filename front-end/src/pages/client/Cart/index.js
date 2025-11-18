@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartList from "../../../components/Cart/CartList";
 import "./Cart.scss";
 import {Link, useNavigate} from "react-router-dom";
@@ -57,7 +57,37 @@ function Cart() {
     // const location = useLocation();
 
     const [data, setData] = useState([]);
-        
+    const [total, setTotal] = useState(0);
+
+    const calculateTotal = (currentData) => {
+        return currentData.reduce((sum, item) => {
+            const priceNew = ((item.info.price*(1 - (item.info.discount/100 || 0))));
+            return sum + priceNew * item.quantity;        
+        }, 0);
+    }
+
+    // *** HÀM MỚI: Cập nhật state data và total ***
+    const updateLocalData = (bookId, newQuantity) => {
+        setData(prevData => {
+            if (newQuantity === 0) {
+                // Hành động xóa
+                const newData = prevData.filter(item => item.id !== bookId);
+                setTotal(calculateTotal(newData));
+                return newData;
+            }
+
+            // Hành động cập nhật số lượng
+            const newData = prevData.map(item => {
+                if (item.id === bookId) {
+                    return { ...item, quantity: newQuantity };
+                }
+                return item;
+            });
+            setTotal(calculateTotal(newData)); // Tính lại tổng tiền ngay lập tức
+            return newData;
+        });
+    }
+
     useEffect(() => {
         const fetchCart = async () => {
             const cartId = Cookies.get("cart");
@@ -83,20 +113,17 @@ function Cart() {
                 })      
                 
                 setData(newData);
-
+                setTotal(calculateTotal(newData)); // Tính tổng tiền lần đầu
+                
                 dispatch(setCart(options));
-            }   
+            }  
             
         };
         fetchCart();
-    }, [dispatch]);
+        // Đã loại bỏ logic tính total dư thừa và data khỏi dependency array
+    }, [dispatch]); // Giữ dispatch
 
     const cartId = Cookies.get("cart");
-
-    const total = data.reduce((sum, item) => {
-        const priceNew = ((item.info.price*(1 - (item.info.discount/100 || 0))));
-        return sum + priceNew*item.quantity;        
-    }, 0)
 
     const handleClick = async () => {
         if(cartId){
@@ -106,8 +133,6 @@ function Cart() {
         }
         dispatch(deleteAllItem());
     }
-
-    console.log(data);
     
 
     return (
@@ -125,7 +150,7 @@ function Cart() {
             <div>
                 {data.length > 0 ? (
                     <>
-                        <CartList data={data}/>
+                        <CartList data={data} updateLocalData={updateLocalData}/>
                         <div className="cart__total">
                             Tổng tiền: <span>{total.toFixed(2)}đ</span>
                         </div>
