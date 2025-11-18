@@ -72,12 +72,6 @@ function UpdateUser (props) {
           <Form.Item label="Họ và tên" name="fullName" rules={rules}>
             <Input />
           </Form.Item>
-          <Form.Item label="Vai trò" name="role" rules={rules}>
-            <Select>
-              <Option value="ADMIN">Admin</Option>
-              <Option value="CUSTOMER">User</Option>
-            </Select>
-          </Form.Item>
           <Form.Item label="Địa chỉ" name="address">
             <Input />
           </Form.Item>
