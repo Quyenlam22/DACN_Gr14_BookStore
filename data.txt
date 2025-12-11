@@ -114,8 +114,8 @@ INSERT INTO users (username, email, password, role, full_name, address, phone) V
 ('customer1', 'customer1@bookstore.com', '$2a$10$hashedPasswordHere', 'CUSTOMER', 'Nguyen Van A', '456 Customer St, Hanoi', '0987654321');
 
 INSERT INTO authors (name, bio, profile_image) VALUES
-('F. Scott Fitzgerald', 'Author of classic American literature', '/images/fitzgerald.jpg'),
-('Stephen Hawking', 'Renowned physicist and author', '/images/hawking.jpg');
+('F. Scott Fitzgerald', 'Author of classic American literature', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSIE2EQGU2oeVLZE-Jtj1s8_IeOKpakzaHPkMo06frKHBuadtzMpUIZO5Em-vL73Sp5nYWjcz1EYh3ffMmuQhsbnJM57dLPuoNENOrhg&s=10'),
+('Stephen Hawking', 'Renowned physicist and author', 'https://vcdn1-vnexpress.vnecdn.net/2018/03/14/1710-1521014337.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eC60Uetu-A0dPpNlEVKyvQ');
 
 INSERT INTO categories (name, description) VALUES
 ('Literature', 'Novels and literary works'),
@@ -145,8 +145,6 @@ INSERT INTO cart_items (cart_id, book_id, quantity) VALUES
 (1, 2, 1); -- 1 cuốn "A Brief History of Time"
 
 
-
-
 INSERT INTO categories (id, name, created_at) VALUES
 (316, 'Sách tiếng Việt', '2025-08-20 09:30:00'),
 (385, 'Sách kỹ năng làm việc', '2025-08-20 09:30:00'),
@@ -162,28 +160,28 @@ INSERT INTO categories (id, name, created_at) VALUES
 
 
 INSERT INTO authors (id, name, bio, profile_image) VALUES
-(363, 'Haruki Murakami', 'Haruki Murakami là tiểu thuyết gia người Nhật Bản, nổi tiếng với các tác phẩm thấm đẫm chủ nghĩa siêu thực và nỗi cô đơn. Các tác phẩm nổi bật: Rừng Na Uy, Biên niên ký chim vặn dây cót.', 'http://example.com/images/authors/haruki_murakami.jpg'),
-(9173, 'Paulo Coelho', 'Paulo Coelho là tiểu thuyết gia người Brazil, nổi tiếng với tác phẩm Nhà giả kim. Ông là một trong những tác giả được dịch nhiều nhất trên thế giới.', 'http://example.com/images/authors/paulo_coelho.jpg'),
-(7142, 'Napoleon Hill', 'Napoleon Hill là tác giả người Mỹ trong lĩnh vực tư duy thành công và phát triển cá nhân, nổi tiếng với cuốn Think and Grow Rich.', 'http://example.com/images/authors/napoleon_hill.jpg'),
-(638625, 'Albert Rutherford', 'Tác giả chuyên viết về lĩnh vực tư duy phản biện và kỹ năng học tập, với mục đích giúp độc giả phát triển khả năng phân tích và đánh giá thông tin.', 'http://example.com/images/authors/albert_rutherford.jpg'),
-(4213891, 'A Crazy Mind team', 'Một nhóm tác giả tập trung vào các chủ đề sức khỏe tinh thần và tâm lý học, thường thông qua các câu chuyện đời thực và góc nhìn nhân văn.', 'http://example.com/images/authors/a_crazy_mind_team.jpg'),
-(572221, 'Donald Keene', 'Học giả, nhà văn người Mỹ, chuyên nghiên cứu về văn học và văn hóa Nhật Bản, nổi bật với các tác phẩm về lịch sử và văn hóa thời Minh Trị.', 'http://example.com/images/authors/donald_keene.jpg'),
-(12018, 'Fyodor Dostoyevsky', 'Tiểu thuyết gia, triết gia người Nga vĩ đại, nổi tiếng với các tác phẩm kinh điển phân tích sâu sắc tâm lý con người như Tội ác và hình phạt, Anh em nhà Karamazov.', 'http://example.com/images/authors/fyodor_dostoyevsky.jpg'),
-(10480, 'La Quán Trung', 'Tiểu thuyết gia thời nhà Minh, Trung Quốc, là tác giả của một trong Tứ đại danh tác Trung Hoa: Tam Quốc Diễn Nghĩa.', 'http://example.com/images/authors/la_quan_trung.jpg'),
-(4415443, 'Instant Research Institude', 'Viện nghiên cứu tập trung vào các chủ đề kỹ năng mềm và xây dựng mối quan hệ trong môi trường làm việc hiện đại.', 'http://example.com/images/authors/instant_research_institute.jpg'),
-(163121, 'Steven Schuster', 'Chuyên gia về tư duy hệ thống và giải quyết vấn đề phức tạp trong công việc và cuộc sống hàng ngày.', 'http://example.com/images/authors/steven_schuster.jpg'),
-(114261, 'Nguyễn Anh Dũng', 'Tác giả Việt Nam chuyên viết về lĩnh vực phát triển bản thân và kỹ năng tư duy sáng tạo, đặc biệt là tư duy ngược.', 'http://example.com/images/authors/nguyen_anh_dung.jpg'),
-(8318, 'Raymond Murphy', 'Raymond Murphy là chuyên gia ngữ pháp, tác giả của bộ sách English Grammar in Use kinh điển, được sử dụng rộng rãi trên toàn thế giới.', 'http://example.com/images/authors/raymond_murphy.jpg'),
-(7807, 'Michael McCarthy', 'Giáo sư ngôn ngữ học người Anh, đồng tác giả của nhiều tài liệu giảng dạy tiếng Anh nổi tiếng, đặc biệt là về từ vựng (English Vocabulary in Use).', 'http://example.com/images/authors/michael_mccarthy.jpg'),
-(843855, 'VARIOS AUTORES', 'Đề cập đến nhiều tác giả khác nhau (thường là trong sách giáo trình hoặc tuyển tập), không phải một cá nhân cụ thể.', 'http://example.com/images/authors/varios_autores.jpg'),
-(46343, 'R. J. Palacio', 'Tác giả người Mỹ, nổi tiếng với tiểu thuyết Wonder (Điều kỳ diệu), một câu chuyện nhân văn về lòng tốt và sự chấp nhận.', 'http://example.com/images/authors/r_j_palacio.jpg'),
-(10081, 'Antoine De Saint-Exupéry', 'Nhà văn, phi công người Pháp, tác giả của kiệt tác Hoàng tử bé (The Little Prince), một câu chuyện ngụ ngôn nổi tiếng.', 'http://example.com/images/authors/antoine_de_saint_exupery.jpg'),
-(5348, 'Aesop', 'Tác giả ngụ ngôn Hy Lạp cổ đại, nổi tiếng với tuyển tập Ngụ ngôn Aesop, chứa đựng nhiều bài học đạo đức sâu sắc.', 'http://example.com/images/authors/aesop.jpg'),
-(931, 'Frances Hodgson Burnett', 'Tiểu thuyết gia người Anh-Mỹ, nổi tiếng với các tác phẩm văn học thiếu nhi kinh điển như The Secret Garden.', 'http://example.com/images/authors/frances_hodgson_burnett.jpg'),
-(315, 'Jonathan Swift', 'Nhà văn châm biếm người Anh-Ireland, tác giả của tác phẩm nổi tiếng Gulliver’s Travels.', 'http://example.com/images/authors/jonathan_swift.jpg'),
-(13992, 'Robin Sharma', 'Chuyên gia lãnh đạo và phát triển bản thân người Canada, nổi tiếng với các sách như Đời ngắn đừng ngủ dài, The Monk Who Sold His Ferrari.', 'http://example.com/images/authors/robin_sharma.jpg'),
+(363, 'Haruki Murakami', 'Haruki Murakami là tiểu thuyết gia người Nhật Bản, nổi tiếng với các tác phẩm thấm đẫm chủ nghĩa siêu thực và nỗi cô đơn. Các tác phẩm nổi bật: Rừng Na Uy, Biên niên ký chim vặn dây cót.', 'https://static01.nyt.com/images/2011/10/23/magazine/23murakami1_span/23murakami1_span-articleLarge.jpg?year=2011&h=478&w=600&s=60526c9c5fa0b415fc3976ba9f5cd59fb90c72f01a7a71d68e4d42604c7457e2&k=ZQJBKqZ0VN'),
+(9173, 'Paulo Coelho', 'Paulo Coelho là tiểu thuyết gia người Brazil, nổi tiếng với tác phẩm Nhà giả kim. Ông là một trong những tác giả được dịch nhiều nhất trên thế giới.', 'https://file.hstatic.net/200000692705/article/paulo-coelho-q-and-a_hero__1__f7b1f5be422643678139800d5759aa36.jpg'),
+(7142, 'Napoleon Hill', 'Napoleon Hill là tác giả người Mỹ trong lĩnh vực tư duy thành công và phát triển cá nhân, nổi tiếng với cuốn Think and Grow Rich.', 'https://cafebiz.cafebizcdn.vn/162123310254002176/2023/2/23/napoleon-hill-1677119216732-16771192171401744424230.jpg'),
+(638625, 'Albert Rutherford', 'Tác giả chuyên viết về lĩnh vực tư duy phản biện và kỹ năng học tập, với mục đích giúp độc giả phát triển khả năng phân tích và đánh giá thông tin.', 'https://salt.tikicdn.com/ts/brickv2og/75/d3/e5/814221520f64e22c5457e1b61e5373aa.jpg'),
+(4213891, 'A Crazy Mind team', 'Một nhóm tác giả tập trung vào các chủ đề sức khỏe tinh thần và tâm lý học, thường thông qua các câu chuyện đời thực và góc nhìn nhân văn.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuLWO3rYsHCdGkmZp4n-m8HNBazeExo6m_vg&s'),
+(572221, 'Donald Keene', 'Học giả, nhà văn người Mỹ, chuyên nghiên cứu về văn học và văn hóa Nhật Bản, nổi bật với các tác phẩm về lịch sử và văn hóa thời Minh Trị.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReaFg-kw8eXTvqKQVRXwfh6ZEaY-vu4NsvIw&s'),
+(12018, 'Fyodor Dostoyevsky', 'Tiểu thuyết gia, triết gia người Nga vĩ đại, nổi tiếng với các tác phẩm kinh điển phân tích sâu sắc tâm lý con người như Tội ác và hình phạt, Anh em nhà Karamazov.', 'https://file.hstatic.net/200000896417/article/fyodor-dostoevsky-author_3b0672fbc9ed46a19f2a5da656548925.jpg'),
+(10480, 'La Quán Trung', 'Tiểu thuyết gia thời nhà Minh, Trung Quốc, là tác giả của một trong Tứ đại danh tác Trung Hoa: Tam Quốc Diễn Nghĩa.', 'https://salt.tikicdn.com/ts/brickv2og/cc/91/51/e47fb3d03f860aca8712a599f39829fa.jpg'),
+(4415443, 'Instant Research Institude', 'Viện nghiên cứu tập trung vào các chủ đề kỹ năng mềm và xây dựng mối quan hệ trong môi trường làm việc hiện đại.', 'https://upload.wikimedia.org/wikipedia/en/f/ff/ICR_new_logo.jpeg'),
+(163121, 'Steven Schuster', 'Chuyên gia về tư duy hệ thống và giải quyết vấn đề phức tạp trong công việc và cuộc sống hàng ngày.', 'https://www.schusterplasticsurgery.com/wp-content/uploads/2025/04/STEVEN-H.-SCHUSTER-MD.jpg'),
+(114261, 'Nguyễn Anh Dũng', 'Tác giả Việt Nam chuyên viết về lĩnh vực phát triển bản thân và kỹ năng tư duy sáng tạo, đặc biệt là tư duy ngược.', 'https://tiki.vn/blog/wp-content/uploads/2024/12/tu-duy-mo-1.jpg'),
+(8318, 'Raymond Murphy', 'Raymond Murphy là chuyên gia ngữ pháp, tác giả của bộ sách English Grammar in Use kinh điển, được sử dụng rộng rãi trên toàn thế giới.', 'https://assets.uniweb.app/opt/e101ad86-44d2-40ae-acd1-b83d71b61e68/lg.webp'),
+(7807, 'Michael McCarthy', 'Giáo sư ngôn ngữ học người Anh, đồng tác giả của nhiều tài liệu giảng dạy tiếng Anh nổi tiếng, đặc biệt là về từ vựng (English Vocabulary in Use).', 'https://images-na.ssl-images-amazon.com/images/I/C19hAv5ecaS.jpg'),
+(843855, 'VARIOS AUTORES', 'Đề cập đến nhiều tác giả khác nhau (thường là trong sách giáo trình hoặc tuyển tập), không phải một cá nhân cụ thể.', 'https://iliadaediciones.com/wp-content/uploads/2021/01/paraguay-autores-chic-767x432.jpg'),
+(46343, 'R. J. Palacio', 'Tác giả người Mỹ, nổi tiếng với tiểu thuyết Wonder (Điều kỳ diệu), một câu chuyện nhân văn về lòng tốt và sự chấp nhận.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tYRZM6cgi-lPF-4UwqPR9_XkQx5nsfKIqw&s'),
+(10081, 'Antoine De Saint-Exupéry', 'Nhà văn, phi công người Pháp, tác giả của kiệt tác Hoàng tử bé (The Little Prince), một câu chuyện ngụ ngôn nổi tiếng.', 'https://trieuxuan.vn/datafiles/img_data/images/Saint-exupery%20van.jpg'),
+(5348, 'Aesop', 'Tác giả ngụ ngôn Hy Lạp cổ đại, nổi tiếng với tuyển tập Ngụ ngôn Aesop, chứa đựng nhiều bài học đạo đức sâu sắc.', 'https://upload.wikimedia.org/wikipedia/commons/6/63/Aesop_pushkin01.jpg'),
+(931, 'Frances Hodgson Burnett', 'Tiểu thuyết gia người Anh-Mỹ, nổi tiếng với các tác phẩm văn học thiếu nhi kinh điển như The Secret Garden.', 'https://i.guim.co.uk/img/media/33e337378edf6cdadb1c2356b343d1d63f6ee3cb/0_211_2695_1618/master/2695.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=b44bcdd0cc5c0cbba659a79cb90e3517'),
+(315, 'Jonathan Swift', 'Nhà văn châm biếm người Anh-Ireland, tác giả của tác phẩm nổi tiếng Gulliver’s Travels.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jervas-JonathanSwift.jpg/250px-Jervas-JonathanSwift.jpg'),
+(13992, 'Robin Sharma', 'Chuyên gia lãnh đạo và phát triển bản thân người Canada, nổi tiếng với các sách như Đời ngắn đừng ngủ dài, The Monk Who Sold His Ferrari.', 'https://salt.tikicdn.com/ts/brickv2og/a5/fa/30/d72d90d8bd9ff48dec64865a8f9d1e5d.jpg'),
 (1755336457656, 'Le Van A', 'Một tác giả đang cập nhật thông tin cá nhân.', 'http://example.com/images/authors/le_van_a.jpg'),
-(112340, 'Betty Azar', 'Chuyên gia ngữ pháp tiếng Anh', 'http://example.com/images/authors/betty_azar.jpg');
+(112340, 'Betty Azar', 'Chuyên gia ngữ pháp tiếng Anh', 'https://englishwithjennifer.wordpress.com/wp-content/uploads/2025/02/betty-azar_photo-2025-1.jpg');
 
 INSERT INTO books (id, title, description, price, stock, category_id, author_id, image_url, discount, created_at, updated_at) VALUES
 (8, 'Rừng Nauy (Tái Bản)', 'Câu chuyện bắt đầu từ một chuyến bay trong ngày mưa ảm đạm, một người đàn ông 37 tuổi chợt nghe thấy bài hát gắn liền với hình ảnh người yêu cũ, thế là quá khứ ùa về xâm chiếm thực tại. Mười tám năm trước, người đàn ông ấy là chàng Toru Wanatabe trẻ trung, mỗi chủ nhật lại cùng nàng Naoko lang thang vô định trên những con phố Tokyo... (Còn tiếp theo như trong mô tả)...', 117000.00, 48, 316, 363, 'https://salt.tikicdn.com/cache/w1200/ts/product/c9/e4/18/a9cfc425fa590c453f20307229804bb3.jpg', 22.00, NULL, NULL),
