@@ -13,6 +13,14 @@ function BookItem (props) {
 
     const cartId = Cookies.get("cart");
 
+    // Hàm định dạng số thành chuỗi tiền tệ Việt Nam
+    const formatCurrency = (number) => {
+        // 1. Dùng Math.round() để làm tròn về số nguyên gần nhất
+        const integerNumber = Math.round(Number(number)); 
+        // 2. Định dạng số nguyên đã làm tròn (sẽ không còn dấu phẩy thập phân)
+        return integerNumber.toLocaleString('vi-VN');
+    };
+
     const handleClick = async (item) => {
         const detailCart = await getCart(cartId);
         const index = detailCart.cartItems.findIndex(itemCart => itemCart.bookId === item.id)
@@ -60,8 +68,13 @@ function BookItem (props) {
                             <div className="top-book__content">
                                 <h2 className="top-book__title">{item.title}</h2>
                                 <div className="top-book__rate"><Rate className="top-book__rate" allowHalf defaultValue={4.5}/> <span>4.8</span></div>
-                                <div className="top-book__price-new">{(((item.price) * (1-item.discount/100)) || item.price).toFixed(2)} đ</div>                                    
-                                <div className="top-book__price">{(item.price)} đ</div>
+                                
+                                {/* Dòng giá mới đã được sửa */}
+                                <div className="top-book__price-new">{formatCurrency((((item.price) * (1-item.discount/100)) || item.price))} đ</div>
+                                
+                                {/* Dòng giá cũ đã được sửa */}
+                                <div className="top-book__price">{formatCurrency(item.price)} đ</div>
+                                
                                 <Button onClick={() => handleClick(item)} type="primary" className="top-book__order">
                                     <Link size="large"><ShoppingCartOutlined /> Thêm vào giỏ hàng</Link>
                                 </Button>

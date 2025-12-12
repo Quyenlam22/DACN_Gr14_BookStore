@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie';
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom"
-import { Button, Col, Dropdown, Layout, Menu, Row } from "antd";
+import { Button, Col, Dropdown, Flex, Layout, Menu, Row } from "antd";
 import { Content, Footer } from "antd/es/layout/layout";
-import logo from "../../images/logo.png";
+// import logo from "../../images/logo.png";
 import "./LayoutDefault.scss";
 import { BankOutlined, ClockCircleOutlined, CreditCardOutlined, EnvironmentOutlined, FacebookOutlined, HomeOutlined, IdcardOutlined, InstagramOutlined, MailOutlined, PhoneOutlined, PinterestOutlined, TwitterOutlined, UserOutlined } from '@ant-design/icons';
 import CartMini from "../../components/Cart/CartMini";
@@ -93,9 +93,10 @@ function LayoutDefault () {
                 <header className="header">
                     <Row gutter={[40, 20]}>
                         <Col span={4}>
-                            <div className="header__logo">
-                                <img src={logo} alt="Logo"/>
-                            </div>
+                            <Flex justify='center' align='center' className="header__logo">
+                                {/* <img src={logo} alt="Logo"/> */}
+                                <h4>BOOK STORE</h4>
+                            </Flex>
                         </Col>
                         <Col span={8}>
                             <div className="header__search">

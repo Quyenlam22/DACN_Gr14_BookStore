@@ -2,7 +2,7 @@ import { Button, Dropdown, Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import './LayoutAdmin.scss';
-import logo from  "../../images/logo.png";
+// import logo from  "../../images/logo.png";
 import { MenuFoldOutlined, MenuUnfoldOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons'
 import { useState } from "react";
 import Notice from "../../components/Notice";
@@ -32,7 +32,8 @@ function LayoutAdmin () {
                 <header className="header-admin">
                     <div className={"header-admin__logo " + (collapse && "header-admin__logo--collapse")}>
                         <div className="header-admin__logo__image">
-                            <img src={logo} alt="Logo"/>
+                            {/* <img src={logo} alt="Logo"/> */}
+                            <h4>BOOK STORE</h4>
                         </div>
                     </div>
                     <div className="header-admin__nav">
