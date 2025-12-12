@@ -1,6 +1,6 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Button, Col, notification, Rate } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart, updateQuantity } from "../../actions/cart";
 import { getCart, updatePatch } from '../../services/cartService';
@@ -10,6 +10,7 @@ function BookItem (props) {
     const { pagination } = props;
     const dispatch = useDispatch();
     const [api, contextHolder] = notification.useNotification();
+    const navigate = useNavigate();
 
     const cartId = Cookies.get("cart");
 
@@ -60,7 +61,7 @@ function BookItem (props) {
             {pagination.currentItems.length > 0 ? (
                 pagination.currentItems.map(item => (
                     <Col span={8} key={item.id}>
-                        <div className="top-book">
+                        <div className="top-book" onClick={() => navigate(`/books/${item.id}`)}>
                             <div className="top-book__thumbnail">
                                 <img src={item.imageUrl} alt={item.title}/>
                             </div>

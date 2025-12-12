@@ -9,6 +9,7 @@ import SearchResult from "../../pages/client/SearchResult";
 import ResultOrder from "../../pages/client/Result";
 import OrderList from "../../pages/client/Order/OrderList";
 import UserInfo from "../../pages/client/UserInfo";
+import BookDetail from "../../components/TopBook/BookDetail";
 
 export const routesClient = [
     {
@@ -28,6 +29,10 @@ export const routesClient = [
                         element: <Category/>
                     }
                 ]
+            },
+            {
+                path: "/books/:id",
+                element: <BookDetail/>,
             },
             {
                 path: "/cart",

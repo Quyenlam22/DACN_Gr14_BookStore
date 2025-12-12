@@ -48,8 +48,14 @@ function CartItem(props) {
             await updatePatch(options, cartId);
         }
         dispatch(deleteItem(item.id));
-
     }
+
+    const formatCurrency = (number) => {
+        // 1. Dùng Math.round() để làm tròn về số nguyên gần nhất
+        const integerNumber = Math.round(Number(number)); 
+        // 2. Định dạng số nguyên đã làm tròn (sẽ không còn dấu phẩy thập phân)
+        return integerNumber.toLocaleString('vi-VN');
+    };
 
     return (
         <div className="cart__item">
@@ -59,9 +65,9 @@ function CartItem(props) {
             <div className="cart__content">
                 <h3>{item.info.title}</h3>
                 <div className="cart__price-new">
-                    {((item.info.price * (1 - item.info.discount/100)) || item.info.price).toFixed(2)}đ
+                    {formatCurrency((item.info.price * (1 - item.info.discount/100)) || item.info.price)}đ
                 </div>
-                <div className="cart__price-old">{item.info.price}đ</div>
+                <div className="cart__price-old">{formatCurrency(item.info.price)}đ</div>
             </div>
             <div className="cart__quantity">
                 <button onClick={() => handleChangeQuantity(-1)}>-</button>

@@ -206,7 +206,7 @@
       "id": "1",
       "username": "admin",
       "email": "admin001@example.com",
-      "password": "$2a$10$5J5tXG/y9GCVn01NfGLmG.qYgXQdbUfVEVlewjtRtA03/FJuKczYy",
+      "password": "$2b$10$hashedpassworduser001",
       "role": "ADMIN",
       "fullName": "Trần Thị B",
       "address": "456 Đường Nguyễn Trãi, Hà Nội",
@@ -498,7 +498,12 @@
     },
     {
       "id": "cd96",
-      "cartItems": [],
+      "cartItems": [
+        {
+          "bookId": 1,
+          "quantity": 6
+        }
+      ],
       "userId": 1
     },
     {
@@ -517,9 +522,18 @@
       "userId": ""
     },
     {
-      "id": "3917",
-      "cartItems": [],
-      "userId": 3
+      "id": "36cf",
+      "cartItems": [
+        {
+          "bookId": 1,
+          "quantity": 1
+        },
+        {
+          "bookId": 6,
+          "quantity": 3
+        }
+      ],
+      "userId": ""
     }
   ]
 }
