@@ -8,6 +8,7 @@ import com.group_6.book_store.entity.OrderItem;
 import com.group_6.book_store.entity.User;
 import com.group_6.book_store.form.OrderCreateForm;
 import com.group_6.book_store.form.OrderItemForm;
+import com.group_6.book_store.form.OrderStatusUpdateForm;
 import com.group_6.book_store.mapper.OrderMapper;
 import com.group_6.book_store.repository.BookRepository;
 import com.group_6.book_store.repository.OrderRepository;
@@ -144,5 +145,24 @@ public class OrderServiceV2 {
         // 2. Xóa đơn hàng
         // CascadeType.ALL và orphanRemoval=true trong Order Items sẽ đảm bảo OrderItems cũng bị xóa.
         orderRepository.delete(order);
+    }
+
+    @Transactional
+    public OrderDTO_v2 updateOrderStatus(Long orderId, OrderStatusUpdateForm form) {
+        // 1. Tìm đơn hàng. Sử dụng findById cơ bản vì không cần JOIN FETCH OrderItems.
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + orderId));
+
+        // 2. Cập nhật trạng thái bằng Mapper.
+        // MapStruct chỉ ánh xạ trường 'status' từ Form sang Entity nhờ phương thức updateStatusFromForm
+        orderMapper.updateStatusFromForm(form, order);
+
+        // Cập nhật trường updatedAt tự động nhờ @PreUpdate trong Entity Order
+
+        // 3. Lưu đơn hàng đã cập nhật
+        Order updatedOrder = orderRepository.save(order);
+
+        // 4. Chuyển đổi sang DTO và trả về (sử dụng convertToOrderDTOV2 có sẵn)
+        return convertToOrderDTOV2(updatedOrder);
     }
 }

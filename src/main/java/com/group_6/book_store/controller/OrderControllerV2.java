@@ -3,6 +3,7 @@ package com.group_6.book_store.controller;
 import com.group_6.book_store.dto.OrderDTO;
 import com.group_6.book_store.dto.OrderDTO_v2;
 import com.group_6.book_store.form.OrderCreateForm;
+import com.group_6.book_store.form.OrderStatusUpdateForm;
 import com.group_6.book_store.service.OrderServiceV2;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -42,5 +43,17 @@ public class OrderControllerV2 {
     public ResponseEntity<Void> deleteOrder(@PathVariable Long orderId) {
         orderServiceV2.deleteOrder(orderId);
         return ResponseEntity.noContent().build(); // Trả về 204 No Content khi xóa thành công
+    }
+
+    @PutMapping("/orders/{orderId}/status")
+    public ResponseEntity<OrderDTO_v2> updateOrderStatus(
+            @PathVariable Long orderId,
+            @RequestBody @Valid OrderStatusUpdateForm form) {
+
+        // Gọi Service để cập nhật trạng thái đơn hàng
+        OrderDTO_v2 updatedOrder = orderServiceV2.updateOrderStatus(orderId, form);
+
+        // Trả về đơn hàng đã được cập nhật với mã trạng thái 200 OK
+        return ResponseEntity.ok(updatedOrder);
     }
 }
