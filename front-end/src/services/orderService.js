@@ -16,7 +16,7 @@ export const createNewOrder = async (options, userId) => {
 };
 
 export const updateOrder = async (id, data) => {
-  const result = await put(data, `orders/${id}`);
+  const result = await put(data, `orders/${id}/status`);
   return result;
 };
 

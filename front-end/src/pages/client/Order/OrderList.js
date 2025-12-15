@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import { getInfoUser } from "../../../services/userService";
 import { Button, Table } from "antd";
 import "./Order.scss";
+import { formatCurrency } from "../../../utils/formatCurrency";
 
 const columns = [
   {
@@ -41,6 +42,30 @@ const columns = [
 function OrderList () {
   const [data, setData] = useState([]);
 
+  const checkStatus = (item) => {
+    if(item.status === "UNPROCESSED") {
+      return( 
+        <>
+          <Button type="primary" danger>Đang xử lý</Button>
+        </>
+      )
+    }
+    else if(item.status === "SHIPPED"){
+      return( 
+        <>
+          <Button type="primary" style={{background: 'greenyellow'}}>Đang giao</Button>
+        </>
+      )
+    }
+    else if(item.status === "DELIVERED") {
+      return( 
+        <>
+          <Button type="primary" style={{background: 'green'}}>Đã hoàn thành</Button>
+        </>
+      )
+    }
+  }
+
   useEffect(()=> {
     const fetchApi = async () => {
       const user = await getInfoUser(Cookies.get('userId'));
@@ -64,21 +89,13 @@ function OrderList () {
                   <div className="item-order" key={itemOrder.id}>
                     <h3>{itemOrder.bookTitle}</h3>
                     <p>Số lượng: {itemOrder.quantity}</p>
-                    <p>Giá: {(itemOrder.unitPrice * (1 - itemOrder.discount/100)).toFixed(2)}</p>
+                    <p>Giá: {formatCurrency(itemOrder.unitPrice * (1 - itemOrder.discount/100))}</p>
                     {/* <p>Giảm giá: {itemOrder.discount}</p> */}
                   </div>
                 ))
               ),
-              totalAmount: item.totalAmount,
-              status: item.status === "UNPROCESSED" ? (
-                <>
-                  <Button type="primary" danger>Đang xử lý</Button>
-                </>
-              ) : (
-                <>
-                  <Button type="primary" style={{background: 'green'}}>Đã hoàn thành</Button>
-                </>
-              ),
+              totalAmount: formatCurrency(item.totalAmount),
+              status: checkStatus(item),
               createdAt: date,
             }
           })

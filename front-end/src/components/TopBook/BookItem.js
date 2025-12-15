@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart, updateQuantity } from "../../actions/cart";
 import { getCart, updatePatch } from '../../services/cartService';
 import Cookies from 'js-cookie';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 function BookItem (props) {
     const { pagination } = props;
@@ -13,14 +14,6 @@ function BookItem (props) {
     const navigate = useNavigate();
 
     const cartId = Cookies.get("cart");
-
-    // Hàm định dạng số thành chuỗi tiền tệ Việt Nam
-    const formatCurrency = (number) => {
-        // 1. Dùng Math.round() để làm tròn về số nguyên gần nhất
-        const integerNumber = Math.round(Number(number)); 
-        // 2. Định dạng số nguyên đã làm tròn (sẽ không còn dấu phẩy thập phân)
-        return integerNumber.toLocaleString('vi-VN');
-    };
 
     const handleClick = async (item) => {
         const detailCart = await getCart(cartId);

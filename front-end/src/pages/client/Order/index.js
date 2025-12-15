@@ -8,6 +8,7 @@ import { getInfoUser } from "../../../services/userService";
 import { useDispatch } from "react-redux";
 import { setCart } from "../../../actions/cart";
 import { createNewOrder } from "../../../services/orderService";
+import { formatCurrency } from "../../../utils/formatCurrency";
 
 function Order () {
     const [form] = Form.useForm();
@@ -124,11 +125,11 @@ function Order () {
                                                 Số lượng: {item.quantity}
                                             </div>
                                             <div className="cart__price-new">
-                                                {((item.info.price * (1 - item.info.discount/100)) || item.info.price).toFixed(2)}đ
+                                                {formatCurrency((item.info.price * (1 - item.info.discount/100)) || item.info.price)}đ
                                             </div>
                                             <Flex justify="flex-end">
                                                 <div className="cart__total">
-                                                    Tổng tiền: <span>{((item.info.price * (1 - item.info.discount/100)) * item.quantity).toFixed(2)}đ</span>
+                                                    Tổng tiền: <span>{formatCurrency((item.info.price * (1 - item.info.discount/100)) * item.quantity)}đ</span>
                                                 </div>
                                             </Flex>
                                         </div>
@@ -137,7 +138,7 @@ function Order () {
                             )
                         })}
                         <div className="cart__total">
-                            Thành tiền: <span>{(total).toFixed(2)}đ</span>
+                            Thành tiền: <span>{formatCurrency(total)}đ</span>
                         </div>
                     </>
                 ): (

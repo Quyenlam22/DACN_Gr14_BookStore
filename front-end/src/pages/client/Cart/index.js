@@ -9,6 +9,7 @@ import { delCart, getCart } from "../../../services/cartService";
 import Cookies from "js-cookie";
 import { getBookById } from "../../../services/bookService";
 import { deleteAllItem, setCart } from "../../../actions/cart";
+import { formatCurrency } from "../../../utils/formatCurrency";
 
 const useStyle = createStyles(({ prefixCls, css }) => ({
   linearGradientButton: css`
@@ -152,7 +153,7 @@ function Cart() {
                     <>
                         <CartList data={data} updateLocalData={updateLocalData}/>
                         <div className="cart__total">
-                            Tổng tiền: <span>{total.toFixed(2)}đ</span>
+                            Tổng tiền: <span>{formatCurrency(total)}đ</span>
                         </div>
                         <ConfigProvider
                             button={{

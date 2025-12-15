@@ -1,16 +1,27 @@
 import { Button, Form, InputNumber, Modal, Select, notification } from "antd";
 import { useState } from "react";
 import { updateOrder } from "../../services/orderService";
+import { useDispatch } from "react-redux";
+import { updateOrderAction } from "../../actions/order";
 
-function UpdateOrder({ item }) {
+function UpdateOrder({ item, setData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const [api, contextHolder] = notification.useNotification();
+  const dispatch = useDispatch();
 
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
+      
       await updateOrder(item.id, values);
+      dispatch(updateOrderAction({
+        id: item.id,
+        status: values.status,
+      }));
+      setData(prev => prev.map(row =>
+        row.id === item.id ? { ...row, status: values.status } : row
+      ));
       api["success"]({
         message: "Cập nhật đơn hàng thành công!",
         duration: 1.5,
@@ -47,14 +58,6 @@ function UpdateOrder({ item }) {
           }}
         >
           <Form.Item
-            label="Tổng tiền"
-            name="totalAmount"
-            rules={[{ required: true, message: "Nhập tổng tiền!" }]}
-          >
-            <InputNumber min={1000} style={{ width: "100%" }} />
-          </Form.Item>
-
-          <Form.Item
             label="Trạng thái"
             name="status"
             rules={[{ required: true, message: "Chọn trạng thái!" }]}
@@ -62,7 +65,8 @@ function UpdateOrder({ item }) {
             <Select
               options={[
                 { label: "Đang xử lý", value: "UNPROCESSED" },
-                { label: "Hoàn thành", value: "COMPLETED" },
+                { label: "Đang giao", value: "SHIPPED" },
+                { label: "Hoàn thành", value: "DELIVERED" },
               ]}
             />
           </Form.Item>

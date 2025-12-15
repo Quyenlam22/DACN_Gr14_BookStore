@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteBook, setBook } from '../../../actions/book';
 import UpdateBook from '../../../components/TopBook/UpdateBook';
 import CreateBook from '../../../components/TopBook/CreateBook';
+import { formatCurrency } from '../../../utils/formatCurrency';
 
 const columns = [
   {
@@ -92,7 +93,7 @@ function BookAdmin () {
             imageUrl: item.imageUrl,
             title: item.title,
             description: item.description,
-            price: item.price,
+            price: formatCurrency(item.price),
             discount: item.discount,
             stock: item.stock,
             categoryId: item.categoryId,

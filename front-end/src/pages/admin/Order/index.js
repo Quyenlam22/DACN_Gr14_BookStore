@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setOrder, deleteOrder } from "../../../actions/order";
 // import CreateOrder from "../../../components/Order/CreateOrder";
 import UpdateOrder from "../../../components/Order/UpdateOrder";
+import { formatCurrency } from "../../../utils/formatCurrency";
 
 const columns = [
   {
@@ -38,12 +39,15 @@ const columns = [
   {
     title: "Trạng thái",
     dataIndex: "status",
-    render: (status) =>
-      status === "UNPROCESSED" ? (
-        <Tag color="red">Đang xử lý</Tag>
-      ) : (
-        <Tag color="green">Hoàn thành</Tag>
-      ),
+    render: (status) => {
+      if (status === "UNPROCESSED") {
+        return <Button type="primary" danger>Đang xử lý</Button>;
+      }
+      if (status === "SHIPPED") {
+        return <Button type="primary" style={{ background: 'greenyellow' }}>Đang giao</Button>;
+      }
+      return <Button type="primary" style={{ background: 'green' }}>Đã hoàn thành</Button>;
+    }
   },
   {
     title: "Ngày tạo",
@@ -80,8 +84,7 @@ function Order() {
             const dataTable = response.content.map((item, index) => {
               const date = new Date(item.createdAt).toLocaleDateString();
               const totalItems =
-                item.orderItems?.reduce((sum, i) => sum + i.quantity, 0) || 0;
-
+                item.orderItems?.reduce((sum, i) => sum + i.quantity, 0) || 0;        
               return {
                 key: index + 1,
                 id: item.id,
@@ -99,17 +102,17 @@ function Order() {
                     <div className="item-order" key={itemOrder.id}>
                       <h3>{itemOrder.bookTitle}</h3>
                       <p>Số lượng: {itemOrder.quantity}</p>
-                      <p>Giá: {(itemOrder.unitPrice * (1 - itemOrder.discount/100)).toFixed(2)}</p>
+                      <p>Giá: {formatCurrency(itemOrder.unitPrice * (1 - itemOrder.discount/100))}</p>
                       {/* <p>Giảm giá: {itemOrder.discount}</p> */}
                     </div>
                   ))
                 ),
-                totalAmount: item.totalAmount,
+                totalAmount: formatCurrency(item.totalAmount),
                 status: item.status,
                 createdAt: date,
                 actions: (
                   <>
-                    <UpdateOrder item={item} />
+                    <UpdateOrder item={item} setData={setData} />
                     <Popconfirm
                       title="Xóa đơn hàng"
                       description="Bạn có chắc muốn xóa đơn hàng này?"

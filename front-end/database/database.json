@@ -498,12 +498,7 @@
     },
     {
       "id": "cd96",
-      "cartItems": [
-        {
-          "bookId": 1,
-          "quantity": 6
-        }
-      ],
+      "cartItems": [],
       "userId": 1
     },
     {
@@ -531,8 +526,32 @@
         {
           "bookId": 6,
           "quantity": 3
+        },
+        {
+          "bookId": 2,
+          "quantity": 1
         }
       ],
+      "userId": ""
+    },
+    {
+      "id": "f91c",
+      "cartItems": [],
+      "userId": ""
+    },
+    {
+      "id": "2f4c",
+      "cartItems": [],
+      "userId": ""
+    },
+    {
+      "id": "366c",
+      "cartItems": [],
+      "userId": ""
+    },
+    {
+      "id": "ad41",
+      "cartItems": [],
       "userId": ""
     }
   ]

@@ -8,15 +8,9 @@ import { addToCart, updateQuantity } from "../../actions/cart"; // CHỈNH SỬA
 import { getCart, updatePatch } from '../../services/cartService'; // CHỈNH SỬA ĐƯỜNG DẪN NÀY CHO ĐÚNG
 import Cookies from 'js-cookie';
 import { getBookById } from '../../services/bookService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 const { Title, Text, Paragraph } = Typography;
-
-// Hàm định dạng tiền tệ
-const formatCurrency = (number) => {
-    return Number(number).toLocaleString('vi-VN', { 
-        maximumFractionDigits: 0 
-    });
-};
 
 function BookDetail() {
     const { id } = useParams();
@@ -124,9 +118,6 @@ function BookDetail() {
     const displayNewPrice = formatCurrency(newPrice);
     const displayOldPrice = formatCurrency(book.price);
 
-    console.log(book);
-    
-    
     return (
         <div className="book-detail-page" style={{ padding: '30px 50px' }}>
             {contextHolder}
