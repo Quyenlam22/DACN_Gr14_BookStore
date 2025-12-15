@@ -553,6 +553,25 @@
       "id": "ad41",
       "cartItems": [],
       "userId": ""
+    },
+    {
+      "id": "f6a1",
+      "cartItems": [],
+      "userId": ""
+    },
+    {
+      "id": "ef30",
+      "cartItems": [
+        {
+          "bookId": 1,
+          "quantity": 1
+        },
+        {
+          "bookId": 2,
+          "quantity": 2
+        }
+      ],
+      "userId": ""
     }
   ]
 }

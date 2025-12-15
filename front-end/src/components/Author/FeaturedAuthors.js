@@ -1,11 +1,13 @@
 import { Card, Col, Row, Typography, Avatar, Button } from "antd";
 import { useEffect, useState } from "react";
 import { getAuthors } from "../../services/authorService"; // API gọi danh sách tác giả
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
 function FeaturedAuthors() {
   const [authors, setAuthors] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAuthors = async () => {
@@ -36,10 +38,10 @@ function FeaturedAuthors() {
             >
               <div style={{ textAlign: 'center' }}>
                 <Title level={4}>{author.name}</Title>
-                <Text type="secondary" style={{ display: 'block' }}>{author.bio}</Text>
+                <Text type="secondary" style={{ display: 'block' }}>{author.bio.slice(0,30)}...</Text>
               </div>
               <div style={{ textAlign: 'center', marginTop: 12 }}>
-                <Button size="large" type="primary">
+                <Button size="large" type="primary" onClick={() => navigate(`/authors/${author.id}`)}>
                   Xem thêm
                 </Button>
               </div>

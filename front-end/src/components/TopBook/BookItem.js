@@ -69,11 +69,12 @@ function BookItem (props) {
                                 {/* Dòng giá cũ đã được sửa */}
                                 <div className="top-book__price">{formatCurrency(item.price)} đ</div>
                                 
-                                <Button onClick={() => handleClick(item)} type="primary" className="top-book__order">
-                                    <Link size="large"><ShoppingCartOutlined /> Thêm vào giỏ hàng</Link>
-                                </Button>
+                                
                             </div>
                         </div>
+                        <Button onClick={() => handleClick(item)} type="primary" className="top-book__order">
+                            <Link size="large"><ShoppingCartOutlined /> Thêm vào giỏ hàng</Link>
+                        </Button>
                     </Col>
                 ))
             ) : (

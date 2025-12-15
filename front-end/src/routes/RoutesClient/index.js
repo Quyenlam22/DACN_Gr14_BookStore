@@ -10,6 +10,7 @@ import ResultOrder from "../../pages/client/Result";
 import OrderList from "../../pages/client/Order/OrderList";
 import UserInfo from "../../pages/client/UserInfo";
 import BookDetail from "../../components/TopBook/BookDetail";
+import AuthorDetail from "../../pages/client/Author";
 
 export const routesClient = [
     {
@@ -33,6 +34,10 @@ export const routesClient = [
             {
                 path: "/books/:id",
                 element: <BookDetail/>,
+            },
+            {
+                path: "/authors/:id",
+                element: <AuthorDetail/>,
             },
             {
                 path: "/cart",

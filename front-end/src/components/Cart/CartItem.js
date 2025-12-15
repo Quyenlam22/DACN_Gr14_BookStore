@@ -54,7 +54,7 @@ function CartItem(props) {
     return (
         <div className="cart__item">
             <div className="cart__image"> 
-                <img  src={item.info.thumbnail} alt={item.info.title} />
+                <img  src={item.info.imageUrl} alt={item.info.title} />
             </div>
             <div className="cart__content">
                 <h3>{item.info.title}</h3>
