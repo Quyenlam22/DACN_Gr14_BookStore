@@ -8,11 +8,11 @@ function MenuSider () {
     const path = location.pathname;
     
     const items = [
-        {
-            key: '/admin/dashboard',
-            icon: <DashboardOutlined />,
-            label: <Link to={"/admin/dashboard"}>Dash board</Link>
-        },
+        // {
+        //     key: '/admin/dashboard',
+        //     icon: <DashboardOutlined />,
+        //     label: <Link to={"/admin/dashboard"}>Dash board</Link>
+        // },
         {
             key: '/admin/categories',
             icon: <OrderedListOutlined />,
@@ -33,11 +33,11 @@ function MenuSider () {
             icon: <FaUsers />,
             label: 'Quản lý người dùng',
             children: [
-                {
-                    key: '/admin/userAdmin',
-                    icon: <FaUsersCog />,
-                    label: <Link to={"/admin/userAdmin"}>Quản lý admin</Link>,
-                },
+                // {
+                //     key: '/admin/userAdmin',
+                //     icon: <FaUsersCog />,
+                //     label: <Link to={"/admin/userAdmin"}>Quản lý admin</Link>,
+                // },
                 {
                     key: '/admin/userClient',
                     icon: <FaUser />,
@@ -50,11 +50,11 @@ function MenuSider () {
             icon: <FaUserSecret />,
             label: <Link to={"/admin/orders"}>Quản lý đơn hàng</Link>,
         },
-        {
-            key: '/admin/settings',
-            icon: <SettingOutlined />,
-            label: <Link to={"/admin/settings"}>Cài đặt chung</Link>,
-        },
+        // {
+        //     key: '/admin/settings',
+        //     icon: <SettingOutlined />,
+        //     label: <Link to={"/admin/settings"}>Cài đặt chung</Link>,
+        // },
     ];
 
     return (

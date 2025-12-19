@@ -24,7 +24,7 @@ export const routesAdmin = [
                     },
                     {
                         index: true,
-                        element: <DashBoard/>,
+                        element: <CategoryAdmin/>,
                     },
                     {
                         path: "categories",

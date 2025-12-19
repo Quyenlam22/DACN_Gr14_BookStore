@@ -17,7 +17,7 @@ function LoginAdmin() {
         duration: 1
       });
       setTimeout(() => {
-        navigate('/admin/dashboard');
+        navigate('/admin/categories');
       }, 1000);
     } else {
       api['error']({
