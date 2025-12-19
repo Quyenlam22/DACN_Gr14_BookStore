@@ -23,4 +23,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     // Tìm sách theo id, kèm thông tin category và author
     @Query("SELECT b FROM Book b LEFT JOIN FETCH b.category LEFT JOIN FETCH b.author WHERE b.id = :id")
     Book findByIdWithDetails(@Param("id") Long id);
+
+    // Thêm vào interface BookRepository
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.category LEFT JOIN FETCH b.author WHERE b.author.id = :authorId")
+    Page<Book> findByAuthorId(@Param("authorId") Long authorId, Pageable pageable);
 }

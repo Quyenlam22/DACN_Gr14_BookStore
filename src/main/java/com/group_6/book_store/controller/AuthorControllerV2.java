@@ -55,4 +55,6 @@ public class AuthorControllerV2 {
         authorServiceV2.deleteAuthor(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }

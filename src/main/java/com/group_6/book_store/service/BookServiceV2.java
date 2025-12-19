@@ -115,4 +115,10 @@ public class BookServiceV2 {
         }
         bookRepository.deleteById(id);
     }
+
+    // Thêm vào class BookServiceV2
+    public Page<BookDTO> getBooksByAuthor(Long authorId, Pageable pageable) {
+        return bookRepository.findByAuthorId(authorId, pageable)
+                .map(bookMapper::toDTO);
+    }
 }
