@@ -20,6 +20,11 @@ export const getBooksByCategory = async (id) => {
     return result;
 }
 
+export const getBooksByAuthor = async (id) => {
+    const result = await get(`books/author/${id}`);
+    return result;
+}
+
 export const createNewBook = async (options) => {
     const result = await post(options, `books`);
     return result;

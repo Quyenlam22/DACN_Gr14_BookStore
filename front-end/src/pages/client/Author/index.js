@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Typography, Avatar } from "antd";
 import { getDetailAuthor } from "../../../services/authorService";
-import { getBook } from "../../../services/bookService";
+import { getBook, getBooksByAuthor } from "../../../services/bookService";
 import BookItem from "../../../components/TopBook/BookItem";
 
 const { Title, Paragraph } = Typography;
@@ -15,7 +15,7 @@ function AuthorDetail() {
   useEffect(() => {
     const fetchData = async () => {
       const authorRes = await getDetailAuthor(id);
-      const booksRes = await getBook();
+      const booksRes = await getBooksByAuthor(id);
 
       setAuthor(authorRes);
       setBooks(booksRes.content);

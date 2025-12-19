@@ -12,7 +12,7 @@ function FeaturedAuthors() {
   useEffect(() => {
     const fetchAuthors = async () => {
       const result = await getAuthors();
-      const featured = result.content.slice(0, 4); // Giới hạn 4 tác giả nổi bật
+      const featured = result.content.slice(0, 6); // Giới hạn 4 tác giả nổi bật
       setAuthors(featured);
     };
     fetchAuthors();
