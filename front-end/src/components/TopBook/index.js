@@ -18,7 +18,7 @@ function TopBook () {
         fetchApi()
     }, [])
 
-    const pagination = paginate(data, currentPage, 3);
+    const pagination = paginate(data, currentPage, 12);
 
     return (
         <>

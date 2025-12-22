@@ -53,7 +53,7 @@ function BookItem (props) {
             {contextHolder}
             {pagination.currentItems.length > 0 ? (
                 pagination.currentItems.map(item => (
-                    <Col span={8} key={item.id}>
+                    <Col span={6} key={item.id}>
                         <div className="top-book" onClick={() => navigate(`/books/${item.id}`)}>
                             <div className="top-book__thumbnail">
                                 <img src={item.imageUrl} alt={item.title}/>

@@ -42,7 +42,7 @@ function AllCategory () {
         fetchApi();
     }, []);
 
-    const pagination = paginate(data, currentPage, 2);
+    const pagination = paginate(data, currentPage, 6);
 
     return (
         <>
@@ -51,7 +51,7 @@ function AllCategory () {
             <Row gutter={[30, 30]}>
                 {pagination.currentItems && (
                     pagination.currentItems.map((item, index) => (
-                        <Col span={12}>
+                        <Col span={8}>
                             <CategoryItem item={item} imageUrl={imageUrls[index]}/>
                         </Col>
                     ))
