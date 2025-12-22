@@ -24,7 +24,7 @@ export const routesAdmin = [
                     },
                     {
                         index: true,
-                        element: <CategoryAdmin/>,
+                        element: <BookAdmin/>,
                     },
                     {
                         path: "categories",

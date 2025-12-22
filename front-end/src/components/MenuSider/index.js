@@ -13,38 +13,43 @@ function MenuSider () {
         //     icon: <DashboardOutlined />,
         //     label: <Link to={"/admin/dashboard"}>Dash board</Link>
         // },
-        {
-            key: '/admin/categories',
-            icon: <OrderedListOutlined />,
-            label: <Link to={"/admin/categories"}>Quản lý danh mục</Link>
-        },
+//        {
+//            key: '/admin/categories',
+//            icon: <OrderedListOutlined />,
+//            label: <Link to={"/admin/categories"}>Quản lý danh mục</Link>
+//        },
         {
             key: '/admin/books',
             icon: <BookOutlined />,
             label: <Link to={"/admin/books"}>Quản lý sách</Link>,
         },
+//        {
+//            key: '/admin/authors',
+//            icon: <FaUserSecret />,
+//            label: <Link to={"/admin/authors"}>Quản lý tác giả</Link>,
+//        },
         {
-            key: '/admin/authors',
-            icon: <FaUserSecret />,
-            label: <Link to={"/admin/authors"}>Quản lý tác giả</Link>,
+            key: '/admin/userClient',
+            icon: <FaUser />,
+            label: <Link to={"/admin/userClient"}>Quản lý tài khoản</Link>,
         },
-        {
-            key: '/admin/user',
-            icon: <FaUsers />,
-            label: 'Quản lý người dùng',
-            children: [
-                // {
-                //     key: '/admin/userAdmin',
-                //     icon: <FaUsersCog />,
-                //     label: <Link to={"/admin/userAdmin"}>Quản lý admin</Link>,
-                // },
-                {
-                    key: '/admin/userClient',
-                    icon: <FaUser />,
-                    label: <Link to={"/admin/userClient"}>Quản lý khách hàng</Link>,
-                }
-            ]
-        },
+//        {
+//            key: '/admin/user',
+//            icon: <FaUsers />,
+//            label: 'Quản lý người dùng',
+//            children: [
+//                // {
+//                //     key: '/admin/userAdmin',
+//                //     icon: <FaUsersCog />,
+//                //     label: <Link to={"/admin/userAdmin"}>Quản lý admin</Link>,
+//                // },
+//                {
+//                    key: '/admin/userClient',
+//                    icon: <FaUser />,
+//                    label: <Link to={"/admin/userClient"}>Quản lý khách hàng</Link>,
+//                }
+//            ]
+//        },
         {
             key: '/admin/orders',
             icon: <FaUserSecret />,
