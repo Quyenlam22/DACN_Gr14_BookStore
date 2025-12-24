@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookServiceV2 {
@@ -120,5 +122,13 @@ public class BookServiceV2 {
     public Page<BookDTO> getBooksByAuthor(Long authorId, Pageable pageable) {
         return bookRepository.findByAuthorId(authorId, pageable)
                 .map(bookMapper::toDTO);
+    }
+
+    // Thêm vào class BookServiceV2
+    public List<BookDTO> getAllBooksNoPagination() {
+        List<Book> books = bookRepository.findAllWithoutPagination();
+        return books.stream()
+                .map(bookMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
