@@ -210,3 +210,40 @@ INSERT INTO books (id, title, description, price, stock, category_id, author_id,
 (6, 'Đời Ngắn Đừng Ngủ Dài (Tái Bản)', '“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng... (Còn tiếp theo như trong mô tả)...', 57491, 42844, 316, 13992, 'https://salt.tikicdn.com/cache/w1200/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg', 23.34, NULL, NULL),
 (7, 'Cây Cam Ngọt Của Tôi - Tái bản lần 2', '“Vị chua chát của cái nghèo hòa trộn với vị ngọt ngào khi khám phá ra những điều khiến cuộc đời này đáng số một tác phẩm kinh điển của Brazil.” (Còn tiếp theo như trong mô tả)...', 108000, 805, 316, NULL, 'https://salt.tikicdn.com/cache/w1200/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg', 0.00, NULL, NULL),
 (1755336457656, 'Đắc Nhân Tâm', 'Day La mo ta sach', 10000, 10, 1755336457656, 1755336457656, 'https://th.bing.com/th/id/R.4b8ca7d8687072ed6dc73e6c4dd8813b?rik=mb8FlPxm0PEH5Q&pid=ImgRaw&r=0', 0.00, NULL, NULL);
+
+-- TỔNG HỢP INSERT DỮ LIỆU SÁCH BỔ SUNG
+INSERT INTO books (title, description, price, stock, category_id, author_id, image_url, discount) VALUES
+-- 1. Thể loại: Literature (ID: 1) - Tác giả: F. Scott Fitzgerald (ID: 1)
+('Tender Is the Night', 'Một tác phẩm khác của Fitzgerald về sự sụp đổ của giới thượng lưu.', 150000, 50, 1, 1, 'https://m.media-amazon.com/images/I/81L8p9S7nEL.jpg', 10.00),
+('This Side of Paradise', 'Cuốn tiểu thuyết đầu tay đưa Fitzgerald đến với sự nổi tiếng.', 130000, 30, 1, 1, 'https://m.media-amazon.com/images/I/71u9S9S7nEL.jpg', 5.00),
+('The Beautiful and Damned', 'Câu chuyện về một cặp đôi giàu có ở New York.', 140000, 25, 1, 1, 'https://m.media-amazon.com/images/I/91u9S9S7nEL.jpg', 0.00),
+
+-- 2. Thể loại: Science (ID: 2) - Tác giả: Stephen Hawking (ID: 2)
+('The Universe in a Nutshell', 'Giải thích các nguyên lý vật lý hiện đại một cách dễ hiểu.', 180000, 40, 2, 2, 'https://m.media-amazon.com/images/I/91A0S9S7nEL.jpg', 15.00),
+('Black Holes and Baby Universes', 'Tập hợp các bài luận và bài giảng của Hawking.', 120000, 20, 2, 2, 'https://m.media-amazon.com/images/I/81B0S9S7nEL.jpg', 10.00),
+('The Grand Design', 'Cuốn sách tranh luận về sự tồn tại của vũ trụ.', 210000, 15, 2, 2, 'https://m.media-amazon.com/images/I/71C0S9S7nEL.jpg', 20.00),
+
+-- 3. Thể loại: Sách tiếng Việt (ID: 316) - Tác giả: Haruki Murakami (ID: 363)
+('Phía Nam Biên Giới, Phía Tây Mặt Trời', 'Một bản tình ca buồn về sự tiếc nuối và quá khứ.', 95000, 100, 316, 363, 'https://salt.tikicdn.com/ts/product/01/a2/4b/9e8b1b2b8d0.jpg', 22.00),
+('Biên Niên Ký Chim Vặn Dây Cót', 'Tác phẩm siêu thực đồ sộ nhất của Murakami.', 250000, 45, 316, 363, 'https://salt.tikicdn.com/ts/product/02/b3/5c/8f9c2c3d9e0.jpg', 15.00),
+('Kafka Bên Bờ Biển', 'Hành trình kỳ ảo của cậu bé 15 tuổi bỏ nhà ra đi.', 180000, 60, 316, 363, 'https://salt.tikicdn.com/ts/product/03/c4/6d/7g0d3e4f0h1.jpg', 10.00),
+
+-- 4. Thể loại: Tác phẩm kinh điển (ID: 842) - Tác giả: Fyodor Dostoyevsky (ID: 12018)
+('Lũ Người Quỷ Ám', 'Tiểu thuyết tiên tri về những biến động chính trị xã hội.', 220000, 18, 842, 12018, 'https://salt.tikicdn.com/ts/product/70/53/c2/5e40f93acf2.jpg', 12.00),
+('Ghi Chép Dưới Hầm', 'Tác phẩm triết học hiện sinh kinh điển.', 110000, 30, 842, 12018, 'https://salt.tikicdn.com/ts/product/11/22/33/445566.jpg', 5.00),
+('Chàng Ngốc', 'Câu chuyện về một tâm hồn thuần khiết giữa xã hội băng hoại.', 195000, 25, 842, 12018, 'https://salt.tikicdn.com/ts/product/88/99/00/112233.jpg', 0.00),
+
+-- 5. Thể loại: Sách tư duy (ID: 871) - Tác giả: Napoleon Hill (ID: 7142)
+('Làm Giàu Qua Cách Phục Vụ', 'Tư duy phục vụ để dẫn đến thành công bền vững.', 85000, 120, 871, 7142, 'https://salt.tikicdn.com/ts/product/0b/cd/50/9c219e19.jpg', 30.00),
+('Kế Hoạch Làm Giàu', 'Các bước cụ thể để hiện thực hóa mục tiêu tài chính.', 92000, 80, 871, 7142, 'https://salt.tikicdn.com/ts/product/aa/bb/cc/dd1122.jpg', 25.00),
+('Chiến Thắng Con Quỷ Trong Bạn', 'Vượt qua nỗi sợ hãi và sự trì trệ của bản thân.', 125000, 55, 871, 7142, 'https://salt.tikicdn.com/ts/product/ee/ff/gg/hh3344.jpg', 10.00),
+
+-- 6. Thể loại: Fiction - Literature (ID: 9) - Tác giả: Antoine De Saint-Exupéry (ID: 10081)
+('Cõi Người Ta', 'Hồi ký về những chuyến bay và triết lý nhân sinh.', 115000, 40, 9, 10081, 'https://salt.tikicdn.com/ts/product/99/ec/9a/f5f8a3f.jpg', 0.00),
+('Bay Đêm', 'Tác phẩm ca ngợi lòng dũng cảm của những người phi công.', 89000, 25, 9, 10081, 'https://salt.tikicdn.com/ts/product/aa/bb/cc/112233.jpg', 5.00),
+('Phi Công Thời Chiến', 'Những suy ngẫm về chiến tranh và định mệnh con người.', 105000, 15, 9, 10081, 'https://salt.tikicdn.com/ts/product/dd/ee/ff/445566.jpg', 10.00),
+
+-- 7. Thể loại: Grammar, vocabulary (ID: 14896) - Tác giả: Raymond Murphy (ID: 8318)
+('Basic Grammar in Use', 'Ngữ pháp cơ bản dành cho người mới bắt đầu.', 165000, 500, 14896, 8318, 'https://m.media-amazon.com/images/I/81A-S9S7nEL.jpg', 5.00),
+('Grammar in Use Intermediate', 'Ngữ pháp trung cấp với bài tập thực hành.', 175000, 300, 14896, 8318, 'https://m.media-amazon.com/images/I/71B-S9S7nEL.jpg', 5.00),
+('Grammar in Use Supplementary Exercises', 'Sách bài tập bổ trợ cho bộ Grammar in Use.', 120000, 200, 14896, 8318, 'https://m.media-amazon.com/images/I/91C-S9S7nEL.jpg', 0.00);

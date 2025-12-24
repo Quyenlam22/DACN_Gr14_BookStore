@@ -70,7 +70,6 @@ function Order () {
 
         const response = await updatePatch({cartItems: []}, Cookies.get('cart'));
         const newOrder = await createNewOrder(orderData, dataUser.id);
-        console.log(newOrder);
         
         dispatch(setCart(response.cartItems));
         navigate("/result");
@@ -117,7 +116,7 @@ function Order () {
                                 <>
                                     <Flex align="flex-start" justify="flex-start" style={{ maxWidth: '80%', margin: '30px auto' }}>
                                         <div className="cart__image">
-                                        <img  src={item.info.thumbnail} alt={item.info.title} />
+                                        <img  src={item.info.imageUrl} alt={item.info.title} />
                                         </div>
                                         <div className="cart__content">
                                             <h3 style={{margin: 0}}>{item.info.title}</h3>
