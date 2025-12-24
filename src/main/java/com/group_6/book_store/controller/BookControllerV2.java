@@ -11,6 +11,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v2")
 public class BookControllerV2 {
@@ -22,7 +24,8 @@ public class BookControllerV2 {
     }
 
     @GetMapping("/books")
-    public ResponseEntity<Page<BookDTO>> getAllBooks(Pageable pageable) {
+    public ResponseEntity<Page<BookDTO>> getAllBooks(
+            @PageableDefault(size = 1000) Pageable pageable) {
         Page<BookDTO> books = bookServiceV2.getAllBooks(pageable);
         return ResponseEntity.ok(books);
     }
@@ -67,6 +70,12 @@ public class BookControllerV2 {
     @GetMapping("/books/author/{authorId}")
     public ResponseEntity<Page<BookDTO>> getBooksByAuthor(@PathVariable Long authorId, Pageable pageable) {
         Page<BookDTO> books = bookServiceV2.getBooksByAuthor(authorId, pageable);
+        return ResponseEntity.ok(books);
+    }
+    // Thêm vào class BookControllerV2
+    @GetMapping("/books/all")
+    public ResponseEntity<List<BookDTO>> getAllBooksNoPagination() {
+        List<BookDTO> books = bookServiceV2.getAllBooksNoPagination();
         return ResponseEntity.ok(books);
     }
 }

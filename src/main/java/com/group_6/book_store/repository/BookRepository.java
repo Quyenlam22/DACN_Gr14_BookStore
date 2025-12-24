@@ -7,7 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface BookRepository extends JpaRepository<Book, Long> {
+
+    // Thêm vào interface BookRepository
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.category LEFT JOIN FETCH b.author")
+    List<Book> findAllWithoutPagination();
     // Lấy tất cả sách kèm thông tin category và author
     @Query("SELECT b FROM Book b LEFT JOIN FETCH b.category LEFT JOIN FETCH b.author")
     Page<Book> findAllWithDetails(Pageable pageable);
