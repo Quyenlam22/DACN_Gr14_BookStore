@@ -24,7 +24,8 @@ public class BookControllerV2 {
     }
 
     @GetMapping("/books")
-    public ResponseEntity<Page<BookDTO>> getAllBooks(Pageable pageable) {
+    public ResponseEntity<Page<BookDTO>> getAllBooks(
+            @PageableDefault(size = 1000) Pageable pageable) {
         Page<BookDTO> books = bookServiceV2.getAllBooks(pageable);
         return ResponseEntity.ok(books);
     }
